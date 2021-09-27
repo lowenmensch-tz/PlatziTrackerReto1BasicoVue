@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,500;1,300&display=swap" rel="stylesheet">
+
+    <title>Platzi Tracker</title>
+</head>
+<body>
+
+
+    <div id="app">
+        <div class="container">
+            
+            <nav class="navbar">
+                <img v-bind:src="isotipo">
+                <img v-bind:src="logotipo">
+            </nav>
+
+            <div class="content">    
+                <div class="center">
+                    
+                    <h1 style="color: #98ca3f;">
+                      Mis Cursos de Platzi💚
+                    </h1>
+            
+                    <input type="text" placeholder="Titulo del curso" v-model="title"/>
+                    <input type="number" placeholder="Horas" v-model="time"/>
+                    
+                    <button v-on:click="addCourse">+</button>
+                    
+                    </fieldset>
+                    
+                    <div v-if="courses.length">
+                      
+                      <h3>Lista de Cursos</h3>
+                      <div>
+                        <ol v-show="courses.length != 0">
+                          <!-- Lista de cursos -->
+                            <li v-for="course in courses">
+                                {{ course.title }} - {{ course.time }}  
+                            </li>
+                        </ol>
+                        <hr/>
+                        <p>
+                          Llevo <strong>{{ totalTime }}</strong> horas aprendiendo en Platzi.
+                          <b>#NuncaParesDeAprender 💚</b>
+                        </p>
+                      </div>
+                    </div>
+            
+                    <div v-else>
+                        <hr/>
+            
+                        <p>
+                            Aun no has realizado cursos.
+                            <b>#NuncaParesDeAprender 💚</b>
+                        </p>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-vue/2.21.2/bootstrap-vue.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
